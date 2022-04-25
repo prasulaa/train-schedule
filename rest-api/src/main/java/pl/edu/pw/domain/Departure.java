@@ -10,6 +10,7 @@ public class Departure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private TrainStation trainStation;
     private LocalTime departureTime;
     private Integer delay;

@@ -10,11 +10,18 @@ public class TrainSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToMany
     private List<Departure> departures;
+    @ManyToOne
     private Train train;
 
     public TrainSchedule(Long id, List<Departure> departures, Train train) {
         this.id = id;
+        this.departures = departures;
+        this.train = train;
+    }
+
+    public TrainSchedule(List<Departure> departures, Train train) {
         this.departures = departures;
         this.train = train;
     }
