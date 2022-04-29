@@ -1,7 +1,11 @@
+package pl.edu.pw.controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+
+public class Controller {
 
     @FXML
     private Spinner<Integer> trainScheduleIdSpinner;
@@ -25,3 +29,4 @@ import javafx.scene.control.SpinnerValueFactory;
         
     }
 
+}
