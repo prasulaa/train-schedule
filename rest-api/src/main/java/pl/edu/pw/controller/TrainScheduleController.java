@@ -31,8 +31,6 @@ public class TrainScheduleController {
         try {
             trainScheduleService.setTrainScheduleDelay(id, delay);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {

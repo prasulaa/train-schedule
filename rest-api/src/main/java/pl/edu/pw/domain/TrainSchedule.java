@@ -10,7 +10,7 @@ public class TrainSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Departure> departures;
     @ManyToOne
     private Train train;

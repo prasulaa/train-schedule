@@ -77,19 +77,25 @@ public class DbInit implements CommandLineRunner {
                 new Departure(trainStation2, LocalTime.parse("21:45")),
                 new Departure(trainStation4, LocalTime.parse("23:30")));
 
-        departureRepository.saveAll(departures1);
-        departureRepository.saveAll(departures2);
-        departureRepository.saveAll(departures3);
-        departureRepository.saveAll(departures4);
-
         TrainSchedule trainSchedule1 = new TrainSchedule(departures1, train1);
         TrainSchedule trainSchedule2 = new TrainSchedule(departures2, train1);
         TrainSchedule trainSchedule3 = new TrainSchedule(departures3, train2);
         TrainSchedule trainSchedule4 = new TrainSchedule(departures4, train2);
 
+        addTrainScheduleToDepartures(departures1, trainSchedule1);
+        addTrainScheduleToDepartures(departures2, trainSchedule2);
+        addTrainScheduleToDepartures(departures3, trainSchedule3);
+        addTrainScheduleToDepartures(departures4, trainSchedule4);
+
         trainScheduleRepository.save(trainSchedule1);
         trainScheduleRepository.save(trainSchedule2);
         trainScheduleRepository.save(trainSchedule3);
         trainScheduleRepository.save(trainSchedule4);
+    }
+
+    private void addTrainScheduleToDepartures(List<Departure> departures, TrainSchedule trainSchedule) {
+        for (Departure d: departures) {
+            d.setTrainSchedule(trainSchedule);
+        }
     }
 }

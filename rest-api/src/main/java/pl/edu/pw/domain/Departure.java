@@ -14,6 +14,8 @@ public class Departure {
     private TrainStation trainStation;
     private LocalTime departureTime;
     private Integer delay;
+    @ManyToOne
+    private TrainSchedule trainSchedule;
 
     public Departure() {
     }
@@ -24,11 +26,20 @@ public class Departure {
         this.delay = 0;
     }
 
-    public Departure(Long id, TrainStation trainStation, LocalTime departureTime, Integer delay) {
+    public Departure(Long id, TrainStation trainStation, LocalTime departureTime, Integer delay, TrainSchedule trainSchedule) {
         this.id = id;
         this.trainStation = trainStation;
         this.departureTime = departureTime;
         this.delay = delay;
+        this.trainSchedule = trainSchedule;
+    }
+
+    public TrainSchedule getTrainSchedule() {
+        return trainSchedule;
+    }
+
+    public void setTrainSchedule(TrainSchedule trainSchedule) {
+        this.trainSchedule = trainSchedule;
     }
 
     public Long getId() {
