@@ -1,25 +1,14 @@
-package pl.edu.pw.domain;
+package pl.edu.pw.dto;
 
-import javax.persistence.*;
+public class TrainStationDTO {
 
-@Entity
-@Table
-public class TrainStation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
     private String name;
 
-    public TrainStation() {
+    public TrainStationDTO() {
     }
 
-    public TrainStation(String name) {
-        this.name = name;
-    }
-
-    public TrainStation(Long id, String name) {
+    public TrainStationDTO(Long id, String name) {
         this.id = id;
         this.name = name;
     }
