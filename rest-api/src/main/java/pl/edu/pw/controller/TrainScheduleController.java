@@ -23,12 +23,14 @@ public class TrainScheduleController {
         this.trainScheduleService = trainScheduleService;
     }
 
-    @PutMapping(path = "/trainschedule/{id}")
+    @PutMapping(path = "/trainschedule/{id}") // TODO TEST
     public ResponseEntity<?> setTrainScheduleDelay(@PathVariable("id") Long id,
                                                    @RequestParam Integer delay) {
         try {
             trainScheduleService.setTrainScheduleDelay(id, delay);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {
