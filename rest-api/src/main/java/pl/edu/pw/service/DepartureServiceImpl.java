@@ -21,17 +21,17 @@ public class DepartureServiceImpl implements DepartureService {
 
     @Override
     public List<DepartureDTO> getDeparturesByTrainStationName(String trainStationName) {
-        try {
-            trainStationName = decode(trainStationName);
-        } catch (UnsupportedEncodingException e) {
-            System.err.println(e.getMessage());
-        }
-
         if (trainStationName == null || trainStationName.isEmpty()) {
             throw new IllegalArgumentException();
         } else {
+            try {
+                trainStationName = decode(trainStationName);
+            } catch (UnsupportedEncodingException e) {
+                System.err.println(e.getMessage());
+            }
+
             List<Departure> departures = departureRepository.findAllByTrainStation_Name(
-                trainStationName);
+                    trainStationName);
             return DepartureMapper.map(departures);
         }
     }
