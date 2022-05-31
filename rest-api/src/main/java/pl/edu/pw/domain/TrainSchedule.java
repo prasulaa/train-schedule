@@ -52,4 +52,13 @@ public class TrainSchedule {
     public void setTrain(Train train) {
         this.train = train;
     }
+
+    @Override
+    public String toString() {
+        return "TrainSchedule{" +
+                   "id=" + id +
+                   ", departures=" + departures +
+                   ", train=" + train +
+                   '}';
+    }
 }
